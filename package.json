@@ -1,0 +1,19 @@
+{
+  "name": "api-social-photography",
+  "version": "1.0.0",
+  "description": "api-social-photography",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon src/index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "cors": "^2.8.5"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.3"
+  }
+}
