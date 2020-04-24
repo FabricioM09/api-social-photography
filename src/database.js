@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 /* process tiene acceso al sistema operativo*/
-const URI = process.env.MONGODB_URI ? process.env.MONGODB_URI : 'mongodb://localhost/databasetest';   
+const URI = process.env.MONGODB_URI? process.env.MONGODB_URI : 'mongodb://localhost/databasetest';   
 
 mongoose.connect(URI, {
     useNewUrlParser: true,

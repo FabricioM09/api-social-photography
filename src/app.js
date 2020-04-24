@@ -12,4 +12,7 @@ app.use(express.urlencoded({extended: false}));
 app.use(cors());
 app.use(express.json());
 
+//routes
+app.use('/api/registerusers', require('./routes/registerusers'));
+
 module.exports = app;
