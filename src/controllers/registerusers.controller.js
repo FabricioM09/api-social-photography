@@ -35,7 +35,7 @@ registerUserCtrl.login = async (req, res) =>{
         return res.status(400).json({message: "The email is not valid"});
     }
 
-    const user = await RegisterUser.findOne({email});
+    let user = await RegisterUser.findOne({email});
 
     if(!user){
         return res.status(400).json({message: "The user not exist"});
@@ -45,8 +45,8 @@ registerUserCtrl.login = async (req, res) =>{
     if(!validPassword){
         return res.status(401).json({auth: false, token: null, message: "Invalid password"});
     }
-
-    const token = jwt.sign({id: user._id}, process.env.mysecretkeyjwt, {
+    
+    const token = jwt.sign({userid: user.id, email: user.email}, process.env.mysecretkeyjwt, {
         expiresIn: moment().add(14, 'days').unix() 
     })
 

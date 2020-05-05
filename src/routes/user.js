@@ -1,16 +1,21 @@
 const { Router } = require('express');
 const router = Router();
-
-const { createUser, setAvatarProfile,  deleteUser, update, getUser, getAllUser } = require('../controllers/users.controller');
+const verifyToken = require('../middleware/verifyToken');
+const verifyPhoto = require('../middleware/verifyPhotoProfile');
+const { createUser, setAvatarProfile,  deleteUser, update, getOne, getAll } = require('../controllers/users.controller');
 
 router.route('/create')
-    .post(createUser)
-    //.get(getAllUser)
+    .post(verifyToken,createUser)
+    
 router.route('/setImageProfile/:id')
-    .post(setAvatarProfile)
+    .post(verifyToken,verifyPhoto,setAvatarProfile)
+
+router.route('/')
+    .get(verifyToken,getAll)
 
 router.route('/:id')
-    .put(update)
-//     .get(getUser)
+    .put(verifyToken,update)
+    .get(verifyToken,getOne)
+    .delete(verifyToken,deleteUser)
 
 module.exports = router;

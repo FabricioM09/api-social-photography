@@ -65,4 +65,26 @@ userCtrl.update = async (req, res) => {
     res.status(200).json({message: "User updated"})
 }
 
+userCtrl.getOne = async (req, res) => {
+    const user =  await User.findById(req.params.id)
+
+    res.status(200).json({user})
+}
+
+userCtrl.getAll = async (req, res) => {
+    const users = await User.find();
+    
+    res.status(200).json({users})
+}
+
+userCtrl.deleteUser = async (req, res) => {
+    try {
+        await User.findByIdAndDelete(req.params.id)
+    } catch (error) {
+       return res.status(400).json({error})
+    }
+
+    res.status(400).json({message: "User deleted"})
+}
+
 module.exports = userCtrl;
