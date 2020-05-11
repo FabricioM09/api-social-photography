@@ -1,7 +1,7 @@
 const { Router } = require('express');
 const router = Router();
-const verifyToken = require('../middleware/verifyToken');
-const verifyPhoto = require('../middleware/verifyPhotoProfile');
+const verifyToken = require('../middlewares/verifyToken');
+const verifyPhoto = require('../middlewares/verifyPhotoProfile');
 const { createUser, setAvatarProfile,  deleteUser, update, getOne, getAll } = require('../controllers/users.controller');
 
 router.route('/create')

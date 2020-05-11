@@ -11,7 +11,6 @@ app.use(express.urlencoded({extended: false}));
 
 //middlewares
 app.use(cors());
-app.use(express.json());
 const storage = multer.diskStorage({
     destination: path.join(__dirname, 'public/uploads'),
     filename: (req, file, cb) => {
@@ -23,5 +22,6 @@ app.use(multer({storage}).single('image'));
 //routes
 app.use('/api/registerusers', require('./routes/registerusers'));
 app.use('/api/users', require('./routes/user'));
+app.use('/api/photos', require('./routes/photo'));
 
 module.exports = app;
