@@ -23,5 +23,7 @@ app.use(multer({storage}).single('image'));
 app.use('/api/registerusers', require('./routes/registerusers'));
 app.use('/api/users', require('./routes/user'));
 app.use('/api/photos', require('./routes/photo'));
+app.use('/api/comments', require('./routes/comment'));
+
 
 module.exports = app;
